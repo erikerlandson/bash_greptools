@@ -1,0 +1,21 @@
+============
+INTRODUCTION
+============
+bash greptools are some convenience functions build on top of grep.
+
+============
+INSTALLATION
+============
+To install bash greptools, copy the file 'bash_greptools' to your home directory, and then add the following line to your .bashrc file:
+
+if [ -f ~/bash_greptools ]; then . ~/bash_greptools; fi
+
+=============
+DOCUMENTATION
+=============
+To Do.
+
+========
+EXAMPLES
+========
+To Do.

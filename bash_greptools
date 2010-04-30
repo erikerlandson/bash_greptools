@@ -1,0 +1,47 @@
+# bash greptools:  convenience tools built on top of grep
+#
+# Copyright (c) 2010 Erik Erlandson
+#
+# Author:  Erik Erlandson <erikerlandson@yahoo.com>
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+gps() {
+    ps -ef | grep "$1"
+}
+
+ge() {
+    env | grep "$1"
+}
+
+gfind() {
+    local e="$1"
+    if [ -z "$e" ]; then return; fi
+    local g="$2"
+    if [ -z "$g" ]; then g="*"; fi
+    local d="$3"
+    if [ -z "$d" ]; then d="."; fi
+    eval "grep -R -n --include=$g $e $d" 
+}
+
+cgrep() {
+    gfind "$1" '*.{c,cpp,C}' "$2"
+}
+
+hgrep() {
+    gfind "$1" '*.{h,hpp,H}' "$2"
+}
+
+chgrep() {
+    gfind "$1" '*.{c,cpp,C,h,hpp,H}' "$2"
+}
