@@ -31,7 +31,7 @@ gfind() {
     if [ -z "$g" ]; then g="*"; fi
     local d="$3"
     if [ -z "$d" ]; then d="."; fi
-    eval "grep -R -n --include=$g $e $d" 
+    eval "grep -R -n --include=$g \"$e\" $d" 
 }
 
 cgrep() {
