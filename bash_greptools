@@ -45,3 +45,24 @@ hgrep() {
 chgrep() {
     gfind "$1" '*.{c,cpp,C,h,hpp,H}' "$2"
 }
+
+cgrepid() {
+    gfind "\(^\|\([^[:alnum:]_]\+\)\)$1\(\([^[:alnum:]_]\+\)\|$\)" '*.{c,cpp,C}' "$2"
+}
+
+hgrepid() {
+    gfind "\(^\|\([^[:alnum:]_]\+\)\)$1\(\([^[:alnum:]_]\+\)\|$\)" '*.{h,hpp,H}' "$2"
+}
+
+chgrepid() {
+    gfind "\(^\|\([^[:alnum:]_]\+\)\)$1\(\([^[:alnum:]_]\+\)\|$\)" '*.{c,cpp,C,h,hpp,H}' "$2"
+}
+
+hist() {
+    sort | uniq -c | awk '{ print $0; t += $1 } END { printf("%7d total\n",t) }'
+}
+
+ghist() {
+    grep "$1" | hist
+}
+
